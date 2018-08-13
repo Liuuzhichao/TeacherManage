@@ -2,6 +2,8 @@ package cn.sdut.rj1506lzc.view;
 
 import cn.sdut.rj1506lzc.dao.TeacherDao;
 import cn.sdut.rj1506lzc.entity.Teacher;
+import cn.sdut.rj1506lzc.utils.SetTable;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
@@ -72,7 +74,7 @@ public class BackUp extends JFrame implements ActionListener{
          * 添加表格
          */
         String[] name = {"编号","姓名","所授课程","职称"};//表头
-        String[][] data = setTable();//表格内容
+        String[][] data = SetTable.setTable();//表格内容
         JTable jTable = new JTable(data,name);
         //设置表头字体
         jTable.getTableHeader().setFont(new Font("宋体",Font.BOLD,20));
@@ -101,7 +103,7 @@ public class BackUp extends JFrame implements ActionListener{
      * @throws SQLException
      * @throws ClassNotFoundException
      */
-    String[][] setTable () throws SQLException, ClassNotFoundException {
+    /*String[][] setTable () throws SQLException, ClassNotFoundException {
         TeacherDao teacherDao = new TeacherDao();
         ArrayList<Teacher> arrayList = teacherDao.selectAll();
         String [][]st = new String[arrayList.size()][4];
@@ -113,7 +115,7 @@ public class BackUp extends JFrame implements ActionListener{
             st[i][3] = teacher.getPosition();
         }
         return st;
-    }
+    }*/
 
     /**
      * 表格居中显示方法
@@ -163,7 +165,7 @@ public class BackUp extends JFrame implements ActionListener{
         if ( e.getSource() == enter ) {
             WriteExecl writeExecl = new WriteExecl();
             try {
-                String[][] date = setTable();//获取教师数据
+                String[][] date = SetTable.setTable();//获取教师数据
                 TeacherDao teacherDao = new TeacherDao();
                 ArrayList<Teacher> arrayList = teacherDao.selectAll();
                 writeExecl.writeEx(arrayList.size(),date);//写入文件
