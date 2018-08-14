@@ -117,9 +117,9 @@ public class LogIn extends JFrame implements ActionListener {
                             "错误",JOptionPane.ERROR_MESSAGE);
                 }
             } else if ( jRadioButton2.isSelected() ) {
+                TeacherDao teacherDao = new TeacherDao();
                 Log log = new Log();
                 log.setName(userName);//将用户名传入下一页面,用于打卡操作
-                TeacherDao teacherDao = new TeacherDao();
                 try {
                     pwd = teacherDao.getPwd(userName);//得到密码
                 } catch (SQLException e1) {
